@@ -1,3 +1,4 @@
+require("dotenv").config();
 const request = require('supertest');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,7 +7,7 @@ const router = require('../routes/todo.routes');
 const ToDoList = require('../models/ToDoList');
 
 beforeAll(async () => {
-  await mongoose.connect('mongodb://localhost:27017/todo-test-db', {
+  await mongoose.connect(process.env.TEST_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
